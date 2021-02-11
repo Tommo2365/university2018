@@ -1,0 +1,54 @@
+############### QUESTION 2 ###############
+############### A ###################
+
+import numpy as np
+
+T=900                           # Temperature in Kelvin (k)
+J=1.8e-21                       # Exchange constant between the nearest neighbours
+z=8                             # Number of nearest neighbours
+kb=1.38e-23                     # Boltzman constant in Joules per kilograme (J/K)                   
+
+m=np.arange(0,1.05,0.005)             # Create and x-axis of 0 to 1.05 (can never be greater than one)
+
+y=np.tanh((z*J*m)/(kb*T))             # From the eq.1 where h=0
+u=np.tanh((0.0005)+((z*J*m)/(kb*T)))  # From the eq.1 where h=0.0005
+v=np.tanh((0.001)+((z*J*m)/(kb*T)))   # From the eq.1 where h=0.001 
+w=np.tanh((0.0015)+((z*J*m)/(kb*T)))  # From the eq.1 where h=0.0015
+
+n=len(m)
+print(len(m),"Lines in 'm'")          # How many lines in 'm'
+
+for i in range(0,n):
+    if(y[i]<=m[i] and y[i]>0):                      # If 'y' in element of 'i' is ≤ to 'm' in element of 'i' but > 0 
+        print("At",T,"K, the value of m =",m[i])    # Print vales where the 'if' stament is true
+        break                                       # Stop the programe when the 1st value is found
+    
+for i in range(0,n):
+    if(u[i]<=m[i] and u[i]>0):                                      # If 'u' in element of 'i' is ≤ to 'm' in element of 'i' but > 0 
+        print("At",T,"K, the value of m =",m[i],"where h=0.05")     # Print vales where the 'if' stament is true
+        break                                                       # Stop the programe when the 1st value is found
+
+for i in range(0,n):
+    if(v[i]<=m[i] and v[i]>0):                                      # If 'v' in element of 'i' is ≤ to 'm' in element of 'i' but > 0 
+        print("At",T,"K, the value of m =",m[i],"where h=0.1")      # Print vales where the 'if' stament is true
+        break                                                       # Stop the programe when the 1st value is found
+
+for i in range(0,n):
+    if(w[i]<=m[i] and w[i]>0):                                      # If 'w' in element of 'i' is ≤ to 'm' in element of 'i' but > 0 
+        print("At",T,"K, the value of m =",m[i],"where h=0.15")     # Print vales where the 'if' stament is true
+        break                                                       # Stop the programe when the 1st value is found
+
+import matplotlib.pyplot as plt    
+
+plt.plot(m,y,label='tanh((z*J*m)/(kb*T))')          # Create an x-axis of 0 to 100
+plt.plot(m,m,'-r',label='m=m')                      # Linear Straight line
+plt.plot(m,u,label='m, where h=0.0005')             # plot m aginst u
+plt.plot(m,v,label='m, where h=0.001')              # plot m aginst v
+plt.plot(m,w,label='m, where h=0.0015')             # plot m aginst w
+
+plt.title('tanh((z*J*m)/(kb*T)) vs. m (Whith an applied field, h)')    # Plot title
+plt.xlabel('m')                                                        # x-axis label
+plt.ylabel('tanh((z*J*m)/(kb*T))')                                     # y-axis label
+plt.legend(loc='upper left')                                           # Show legend
+
+plt.show()              # Make a plot

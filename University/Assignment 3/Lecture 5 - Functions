@@ -1,0 +1,11 @@
+import numpy as np
+
+def move_particle(rn):
+		if(rn==0):
+			return("Turn left")         # if random number returns 0 make = left
+		elif(rn==1):
+			return("Turn Right")        # if not 0, but 1 make = right
+
+my_rand_no=np.random.random_integers(0,1)           #define the limits in integer format
+
+print(move_particle(my_rand_no)) 

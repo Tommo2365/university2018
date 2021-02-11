@@ -1,0 +1,56 @@
+############### QUESTION 1 ###############
+############### A - part 2 ###################
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+T=900                           
+J=1.8e-21                       
+z=8                             
+kb=1.38e-23                                      
+m=np.arange(0,1.05,0.005)       
+#y=np.tanh((z*J*m)/(kb*T))  
+ 
+ 
+n=len(m)
+print(len(m),"Lines in 'm'")            
+
+Tarray=np.arange(100,1200,5)
+Tarray.fill(0.0)
+
+marray=np.ndarray(shape=len(Tarray),dtype=float)
+
+                  
+for T in range(100,1200,5):
+    y=np.tanh((z*J*m)/(kb*T))                                 
+
+    for i in range(0,n):
+        if(y[i]<=m[i] and y[i]>0):                             
+            marray[i]=y[i]
+            print("At",T,"K, the value of m =",m[i],"A/m")    
+            break                                             
+
+Tarray=np.arange(100,1200,5)
+#print(Tarray)
+
+marray=np.ndarray(shape=len(Tarray),dtype=float)
+#print(marray)
+
+#----------------------------------------------------------------------------------------------------------------------
+
+############### Plot - part 2 ############### 
+
+import matplotlib.pyplot as plt    
+
+plt.plot(Tarray,marray,'-r',label='h=0')                  # Linear Straight line
+#plt.plot(marray,,label='Temperature, K')  # Create an x-axis of 0 to 100
+
+plt.axis([5, 1500.01, 0, 1.01])
+plt.title('Temperature vs. m')              # Plot title
+plt.xlabel('Tempr')                         # x-axis label
+plt.ylabel('tanh((z*J*m)/(kb*T))')          # y-axis label
+plt.legend(loc='upper left')                # Show legend
+
+plt.show()                                  # So we can see what is happening
+
+plt.savefig("Ass3q1curve.pdf",bbox_inches='tight')

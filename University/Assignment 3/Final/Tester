@@ -1,0 +1,42 @@
+############### QUESTION 1 ###############
+############### A ###################
+
+import numpy as np
+
+T=500                         # Temperature in Kelvin (k)
+J=1.8e-21                       # Exchange constant between the nearest neighbours
+z=8                             # Number of nearest neighbours
+kb=1.38e-23                     # Boltzman constant in Joules per kilograme (J/K)                   
+m=np.arange(0,1.05,0.005)       # Create and x-axis of 0 to 1.05 (can never be greater than one)
+y=np.tanh((z*J*m)/(kb*T))       # From the equation when H=0
+ 
+
+n=len(m)
+print(n,"Lines in 'm'")            # How many lines in 'm'
+
+
+Tarray=np.arange(5,1200,5)
+marray=np.ndarray(shape=len(Tarray),dtype=float)
+
+for T in range(T,1200,5):
+    
+    for i in range(0,n):
+        if(y[i]<=m[i] and y[i]>0):                      # If 'y' in element of 'i' is ≤ to 'm', but > 0 
+            print("At",T,"K, the value of m =",m[i])    # Print vales where the 'if' stament is true
+            break                                       # Stop the programe when the 1st value is found
+
+#----------------------------------------------------------------------------------------------------------------------
+
+############### B ############### 
+
+import matplotlib.pyplot as plt    
+
+plt.plot(Tarray,marray,label='tanh((z*J*m)/(kb*T))')  # Create an x-axis of 0 to 100
+plt.plot(m,m,'-r',label='m=m')              # Linear Straight line
+
+plt.title('tanh((z*J*m)/(kb*T)) vs. m')     # Plot title
+plt.xlabel('m')                             # x-axis label
+plt.ylabel('tanh((z*J*m)/(kb*T))')          # y-axis label
+plt.legend(loc='upper left')                # Show legend
+
+plt.show()                                  # So we can see what is happening

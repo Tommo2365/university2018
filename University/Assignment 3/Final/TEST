@@ -1,0 +1,63 @@
+############### QUESTION 1 ###############
+############### A ###################
+
+import numpy as np
+
+T=900                           # Temperature in Kelvin (k)
+J=1.8e-21                       # Exchange constant between the nearest neighbours
+z=8                             # Number of nearest neighbours
+kb=1.38e-23                     # Boltzman constant in Joules per kilograme (J/K)                   
+m=np.arange(0,1.05,0.005)       # Create and x-axis of 0 to 1.05 (can never be greater than one)
+y=np.tanh((z*J*m)/(kb*T))       # From the equation when H=0
+
+n=len(m)
+print(len(m),"Lines in 'm'")            # How many lines in 'm'
+
+
+
+intdata=np.ndarray(shape=Tmax,dtype=float)
+intdata.fill(0.0)
+
+Tdata=np.ndarray(shape=Tmax,dtype=float)
+Tdata.fill(0.0)
+
+#defines the arrays for intercept data and Temp data
+
+for b in range (0,n):
+    T= T+5
+    Tdata[b]= T
+    mtan=np.tanh(((Ub*Uo*H)/(Kb*T))+(Z*J*m)/(Kb*T))
+    for v in range (0,noval):
+        if(mtan[v]<=m[v] and mtan[v]>0):
+            print("When T =",T,"K","the value of the intercept is ",m[v])
+            intdata[b]= mtan[v]
+            break
+
+#runs through a loop which varys the value of "m" in "mtan" with the
+#values of "m" & "mtan" being compared to find the intercept between
+#the two, with this value then being stored in the intdata array
+#the value of T at each intercept is also stored in Tdata array to then be plotted against the intercept data
+
+print("T array",Tdata)            
+print("The following is the dataset for the intercepts between the fucntions y = m & y = tanh(ZJm/KbT) againts T",intdata)
+print("The following is the dataset for the fucntion y = tanh(ZJm/KbT) When T =",T,mtan)
+#allows for the arrays to be checked manually
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#for i in range(0,n):
+   # if(y[i]<=m[i] and y[i]>0):                      # If 'y' in element of 'i' is ≤ to 'm' in element of 'i', but > 0 
+        #print("At",T,"K, the value of m =",m[i])    # Print vales where the 'if' stament is true
+        #break                                       # Stop the programe when the 1st value is found
+
