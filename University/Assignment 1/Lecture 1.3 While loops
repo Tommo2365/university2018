@@ -1,0 +1,17 @@
+# syntax fora 'while' loop
+
+#for i in range(0,10):
+#    print(i)
+    # why does it not print 10? #101 because (0 to n-1)
+
+#sum the 1st 100 intergers...
+
+sumint=0
+for i in range(0,101):
+    sumint=sumint+i
+while(i<6):
+print(sumint)
+    
+    
+
+#indents evrything thing you want to loop every time.accept2dyear 

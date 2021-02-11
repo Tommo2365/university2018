@@ -1,0 +1,91 @@
+################ QUESTION 1 ####################
+
+#### PART A ##########################################
+
+import os
+import numpy as np
+
+# The file 'grain_data.txt' is saved in the same folder as this code, but it it good practice to check.
+
+# print(os.getcwd())                                            # Where is this file?
+# print(os.listdir())                                           # List all the files in that directory
+f=open("grain_data.txt")                                        # Open thext file
+# print(f.read())                                               # Print 'grain_data.txt' (Do this just to check we have the right file) - Error if used while printing 'darray'
+
+lc=0                                                            # Keep track of number of lines
+
+for i in f:                                                     # The number of lines in 'f'
+    lc=lc+1                                                     #
+f.seek(0)                                                       # Go back to line 0
+# print("There are",lc,"lines in this file",)                   # Prints the numbe of lines - We will need this later to calculate the mean
+
+darray=np.ndarray(shape=lc,dtype=float)                         #Declare and array 'lc' long
+
+# Rereading the data to calculate the sum
+
+j=0                                                             # Index of 'i'
+for i in f:                                                     # Stores each element in 'i' (Where 'i' is = to each line)
+    darray[j]=float(i)                                          # Turns each value for 'i' into a float and puts each line into an array
+    j=j+1                                                       # Keeps track of each line
+#print(darray)                                                  # Prints array of values
+
+sum=0
+
+for i in range(0,lc):                                           # We know the range is 1000 from 'print(lc)'      
+    sum+=darray[i]                                              # Sum the data in the array 'darray'. Addressing the array element 'i'        
+
+mean=sum/lc                                                     # The mean average of our araay 'grain_data.txt'                                   
+                                                            
+print("The mean average of the array is calculated to be",mean,"mircometers")                            # Prints the mean average
+print("The mean average of the array using in-built 'numpy' command",np.mean(darray),"mircometers")   # In-built numpy command to verify mean value in 'darray'
+
+a=open("question_1a.txt","w+")                #search for "newfile.txt" if it does not exist, make one.
+a.write("The mean average of the array is calculated to be' 0.626033474479 mircometers")
+a.close()
+#-------------------------------------------------------------------------------------------------------------------------------------------------------
+#### PART B ##########################################
+
+print("As the average is .06 micro meters, we can attibute this value to that of grain 1(one)")
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------
+#### PART C ##########################################
+
+
+# Cannot find the max and min using 'darray' so will have to reopen the file
+
+f=open("grain_data.txt")                # Reopen the file: 'grain_data.txt'
+
+max=1                                   # 'max' can be equal to any integer but '0'(Zero)                                                             
+min=max
+
+for line in f:                          # Read 'f' line by line as a string
+    
+    datum=float(line)                                   
+    if(datum>max):                                      
+        max=datum                                       
+    if(datum<min):
+        min=datum
+
+print("The minimum value of the 1000 values in 'grain_data.txt' is calculated to be",min,"micrometers")                                     # Print the 'min' value
+print("The minimum value of the 1000 values in 'grain_data.txt' using the in-built 'numpy' command:",np.amin(darray),"micrometers")         # In-built numpy command to verify 'min' value in 'darray'
+                                                                                                                                            # Note that this is rounded to 12 decimal places
+
+print("The maximum value of the 1000 values in 'grain_data.txt' is calculated to be",max,"micrometers")                                     # Print the 'max' value
+print("The maximum value of the 1000 values in 'grain_data.txt' using the in-built 'numpy' command:",np.amax(darray),"micrometers")         # In-built numpy command to verify 'max' value in 'darray'
+                                                                                                                                            # Note that this is rounded to 12 decimal place
+                                                                                                
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
+#### PART D ##########################################
+
+# Using the loops 'mean' and the array 'darray'
+
+
+sigma=np.sqrt(np.sum((darray-mean)**2)/(lc))                                                                                                    #Plugging our values in the standard deviation equation (sigma)                                      
+
+print("The standard deviation of the 1000 values in 'grain_data.txt' is calculated to be:",sigma,"micrometers")                               #Print sigma using the loops
+print("The standard deviation of the 1000 values in 'grain_data.txt' using the in-built 'numpy' command is:",np.std(darray),"micrometers")    #print sigma using in-built 'numpy' command
+
+d=open("question_1d.txt","w+")                #search for "newfile.txt" if it does not exist, make one.
+d.write("The standard deviation of the 1000 values in 'grain_data.txt' is calculated to be: 0.348081016828 micrometers")
+d.close()
+

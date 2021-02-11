@@ -1,0 +1,26 @@
+import os
+import numpy
+
+os.getcwd()                         #Tell me where the file is
+filename="grain_data.txt"                #declare the file name as a string
+f=open("grain_data.txt","r")             #open text file
+print(f.read())
+
+
+lc=0                    #Keep track of number of lines
+
+for i in f:             
+    lc=lc+1
+print(lc)               #prints the numbe of lines
+f.seek(0)                #Start at line 0
+print(f.read())         #Print
+
+sum=0
+
+for i in range(0,1000):               
+    
+    datum=f.readline()     
+print(type(datum))              #tells us what formate datum is in e.g "int or string"
+sum+=datum                      #sum if of each line
+print(sum)                      #prints the sum
+print(sum/1000)                     #prints the average

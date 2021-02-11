@@ -1,0 +1,25 @@
+import os
+
+print(os.getcwd())              #where is this file?
+print(os.listdir())             #list all the fiels in that directory
+f=open("file1.txt")             #open text file
+
+
+print(f.read())                 #print contents of txt file
+f.seek(25)                      #print from a specifc character
+print(f.read())
+
+#numpy.pi
+
+#Troubleshooting and using the os library
+
+os.chdir("test folder")#changes the directory so you can read another file in a diffrent directory
+
+print(os.getcwd())
+print(os.listdir())             #list all the fiels in that directory
+g=open("file4.txt")             #open text file
+
+print(g.read())
+
+        #Both files now print even though they are in diffrent directories.
+

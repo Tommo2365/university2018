@@ -1,0 +1,34 @@
+import os
+import numpy
+
+f=open("grain_data.txt")     #open thext file
+#print(f.read())        #print that file (Do this just to check we have the right file)
+
+lc=0                    #Keep track of number of lines
+
+for i in f:             
+    lc=lc+1
+#print(lc)               #prints the numbe of lines
+f.seek(0)                #Start at line 0
+#print(f.read())         #Print
+
+darray=numpy.ndarray(shape=lc,dtype=float)  #Declare and array lc long
+
+j=0                     # Placeholder
+for i in f:             # Stores each element in i (where i is = to each line)
+    darray[j]=float(i)  # Turns each value for i into a float and puts eaach line into an array
+    j=j+1               # keeps track of each line
+print(darray)           # prints array of valeus
+
+for line in f:
+    datum=float(line)
+
+    if(datum<minval):
+        minval=datum
+    if(datum>maxval):
+        maxval=datum
+
+
+
+bins=10000
+numpy.histogram(f,bins=nbins,range=(min,max))

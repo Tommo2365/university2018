@@ -1,0 +1,103 @@
+################ QUESTION 1 ####################
+
+#### PART A ##########################################
+
+import os
+import numpy as np
+
+# The file 'grain_data.txt' is saved in the same folder as this code, but it it good practice to check.
+
+print("This file is located:",os.getcwd())                                          # Where is this file?
+print(" ")                                                                          # Used to create a space in the shell
+print("The files that exist in the above location are:",os.listdir())               # List all the files in that directory
+f=open("grain_data.txt")                                                            # Open the file
+# print(f.read())                                                                   # Print 'grain_data.txt' (Do this just to check we have the right file) - Error if used while printing 'darray'
+
+lc=0                                                            # Keep track of number of lines
+
+for i in f:                                                     # The number of lines in 'f'
+    lc+=1                                                       
+f.seek(0)                                                       # Go back to line 0
+print(" ")                                                      # Used to create a space in the shell
+print("There are",lc,"lines in the file 'grain_data.txt'",)     # Prints the numbe of lines - We will need this later to calculate the mean
+
+darray=np.ndarray(shape=lc,dtype=float)                         #Declare and array 'lc' long
+
+# Rereading the data to calculate the sum
+
+j=0                                                                             # Index of 'i'
+for i in f:                                                                     # Stores each element in 'i' (Where 'i' is = to each line)
+    darray[j]=float(i)                                                          # Turns each value for 'i' into a float and puts each line into an array
+    j+=1                                                                        # Keeps track of each line
+
+print(" ")                                                                      # Used to create a space in the shell   
+sum=0                                           # Placeholder
+
+for i in range(0,lc):                           # We know the range is 1000 from 'print(lc)'      
+    sum+=darray[i]                              # Sum the data in the array 'darray'. Addressing the array element 'i'        
+
+mean=sum/lc                                     # The mean average of our araay 'grain_data.txt'                                   
+                                                            
+print("The mean average of the array is calculated to be",mean,"µm")                         # Prints the mean average
+print("The mean average of the array using in-built 'numpy' command",np.mean(darray),"µm")   # In-built numpy command to verify mean value in 'darray'
+
+a=open("question_1a.txt","w+")                                                               # Search for 'question_1a' if it does not exist, make one.
+a.write("The mean average of the array is calculated to be 0.626033474479 µm")               # Write the quoted text into the new file, 'question_1a.txt'
+a.close()                                                                                    # Close the file so that no more can be added
+
+print(" ")                                                                                   # Used to create a space in the shell
+#-------------------------------------------------------------------------------------------------------------------------------------------------------
+#### PART B ##########################################
+
+print("As the mean average is 0.06 µm, we can attibute this value to that of grain 1(one)")  # From the assignment brief
+print (" ")                                                                                  # Used to create a space in the shell
+#-------------------------------------------------------------------------------------------------------------------------------------------------------
+#### PART C ##########################################
+
+
+# Using the array: 'darray'
+
+max=1                                   # 'max' can be equal to any integer except '0'(Zero)                                                             
+min=max
+
+for i in range(0,lc):                   # Read 'f' line by line as a string
+    
+    datum=darray[i]                     # For each element in 'i'              
+    if(datum>max):                      # If datum is > the maximum value,                
+        max=datum                       # make the max value = datum                                        
+    if(datum<min):                      # If datum is < the minimum value, 
+        min=datum                       # make the min value = datum
+
+print("The minimum value of the 1000 values in 'grain_data.txt' is calculated to be",min,"µm")                            # Print the 'min' value
+print("The minimum value of the 1000 values in 'darray' using the in-built 'numpy' command:",np.amin(darray),"µm")        # In-built numpy command to verify 'min' value in 'darray'
+                                                                                                                          # Note that this is rounded to 12 decimal places
+print(" ")                                                                                                                # Used to create a space in the shell
+
+print("The maximum value of the 1000 values in 'grain_data.txt' is calculated to be",max,"µm")                            # Print the 'max' value
+print("The maximum value of the 1000 values in 'darray' using the in-built 'numpy' command:",np.amax(darray),"µm")        # In-built numpy command to verify 'max' value in 'darray'
+                                                                                                                          
+c=open("question_1c.txt","w+")                                                                                            # Search for 'question_1d.txt' if it does not exist, make one.
+c.write("The minimum value of the 1000 values in 'grain_data.txt' is calculated to be 0.0773095125619855 µm")             # Write the quoted text into the new file, 'question_1c.txt' 
+c.write(" and the maximum value of the 1000 values in 'grain_data.txt' is calculated to be 3.2702793285398637 µm")        #
+c.close()                                                                                                                 # Close the file                                                                                                                                            # Note that this is rounded to 12 decimal place
+print(" ")                                                                                                                # Used to create a space in the shell                                                                                               
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
+#### PART D ##########################################
+
+# Using the loops 'mean' and the array 'darray'
+
+sigma=np.sqrt(np.sum((darray-mean)**2)/(lc))                                                                                        # Plugging our values in the standard deviation equation (sigma)                                      
+
+print("The standard deviation of the 1000 values in 'grain_data.txt' is calculated to be:",sigma,"µm")                              # Print sigma using the loops
+print("The standard deviation of the 1000 values in 'grain_data.txt' using the in-built 'numpy' command is:",np.std(darray),"µm")   # Print sigma using in-built 'numpy' command
+
+d=open("question_1d.txt","w+")                                                                                                      # Search for 'question_1d.txt' if it does not exist, make one.
+d.write("The standard deviation of the 1000 values in 'grain_data.txt' is calculated to be: 0.348081016828 µm")                     # Write the quoted text into the new file, 'question_1d.txt' 
+d.close()                                                                                                                           # Close the file so that no more can be added
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+print(" ")                                                                                                                          # Used to create a space in the shell
+print("Please find the three files 'question_1a.txt', 'question_1c.txt' and 'question_1d.txt' located at:",os.getcwd())             # Just to let you know
+
+

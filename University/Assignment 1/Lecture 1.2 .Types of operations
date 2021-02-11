@@ -1,0 +1,56 @@
+Python 3.2.5 (default, May 15 2013, 23:06:03) [MSC v.1500 32 bit (Intel)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> A=3
+>>> Print(A)
+Traceback (most recent call last):
+  File "<pyshell#1>", line 1, in <module>
+    Print(A)
+NameError: name 'Print' is not defined
+>>> (A=3)
+SyntaxError: invalid syntax
+>>> A=3
+>>> Prinb
+Traceback (most recent call last):
+  File "<pyshell#4>", line 1, in <module>
+    Prinb
+NameError: name 'Prinb' is not defined
+>>> fdhdgfh
+Traceback (most recent call last):
+  File "<pyshell#5>", line 1, in <module>
+    fdhdgfh
+NameError: name 'fdhdgfh' is not defined
+>>> #ignore
+>>> A=3
+>>> Print(A)
+Traceback (most recent call last):
+  File "<pyshell#8>", line 1, in <module>
+    Print(A)
+NameError: name 'Print' is not defined
+>>> print(A)
+3
+>>> A=10.1
+>>> print(A)
+10.1
+>>> A=10
+>>> Type(A)
+Traceback (most recent call last):
+  File "<pyshell#13>", line 1, in <module>
+    Type(A)
+NameError: name 'Type' is not defined
+>>> type(A)
+<class 'int'>
+>>> A=2==1
+>>> type(A)
+<class 'bool'>
+>>> A=1/2
+>>> type(A)
+<class 'float'>
+>>> A=2*1.0
+>>> type(A)
+<class 'float'>
+>>> # Types of operations
+>>> type(A)
+<class 'float'>
+>>> 
+>>> 
+>>> 

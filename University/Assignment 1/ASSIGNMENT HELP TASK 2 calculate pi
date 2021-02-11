@@ -1,0 +1,28 @@
+#Import numpy
+#numpy.random.random+integers(0,100)
+
+
+
+import numpy
+import time
+
+start=time.time()
+
+m=0
+n=100000
+for i in range(0,n):
+    x=numpy.random.uniform(0,1.0)
+    y=numpy.random.uniform(0,1.0)
+    dist=numpy.sqrt(x**2+y**2)
+
+    if(dist<=1):
+        m=m+1
+
+print((m/n)*4)
+
+
+print ("This programme took")
+print ((time.time()-start),("Seconds"))
+
+#numpy.pi
+

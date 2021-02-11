@@ -1,0 +1,35 @@
+import numpy
+import time
+
+start=time.time()
+
+#calculating pi using Gregory-Leiniz method
+
+#set pi = numpy.sqrt(3.0)
+
+pi = 0
+
+#Tan**-1 = pi/4
+
+#Add the Gregory-Leiniz to  pi=0 and mulitply by 6.
+
+for i in range(1,100):
+    pi +=((4.0*1-(1.0)**i)/(2.0*i+1.0))
+
+print(pi)
+
+#indent the print to print the final value only.
+
+#Although I would get a greater degree of accuracy. I have set i to go between 1-5000.
+#going above a certian range of i could cause it to become more inaccurate.
+#A much higher value will take a long time to 'print'.
+
+print ("This programme took")
+print ((time.time()-start),("Seconds"))
+
+
+
+
+
+
+

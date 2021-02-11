@@ -1,0 +1,114 @@
+From: "Saved by Internet Explorer 11"
+Subject: 
+Date: Thu, 7 Mar 2019 11:38:06 -0000
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://shuspace.shu.ac.uk/bbcswebdav/pid-8305339-dt-content-rid-32565090_2/courses/55-402182-AF-20189/Lecture3Example3_NumpyBinning.py
+X-MimeOLE: Produced By Microsoft MimeOLE V6.1.7601.24000
+
+<!DOCTYPE HTML>
+<!DOCTYPE html PUBLIC "" ""><HTML><HEAD><META content=3D"IE=3D11.0000"=20
+http-equiv=3D"X-UA-Compatible">
+
+<META http-equiv=3D"Content-Type" content=3D"text/html; =
+charset=3Dwindows-1252">
+<META name=3D"GENERATOR" content=3D"MSHTML 11.00.9600.19267"></HEAD>
+<BODY>
+<PRE># This program reads a data file which is read in=0A=
+# and uses numpy to group the data into "nbins" bins=0A=
+# which is also read in=0A=
+# Usage:=0A=
+# python Lecture3Example3_NumpyBinning.py=0A=
+# You will be prompted to enter the filename and the=0A=
+# number of bins you require. In that way, the code is=0A=
+# more general and you can use it to analyse any data=0A=
+# file with a single column of data=0A=
+import numpy=0A=
+import os=0A=
+=0A=
+filename =3D input("Enter the filename (you must NOT include quotation =
+marks): ")=0A=
+# The number of bins that we are going to=0A=
+nbins =3D int(input("Enter the number of bins: "))=0A=
+=0A=
+=0A=
+# Having fewer than 1 bins is not sensible. We can check for user input =
+error.=0A=
+if(nbins&lt;1):=0A=
+    # Print an error to the screen=0A=
+    print("\n***Error: the number of bins cannot be less than 1***\n\n")=0A=
+    # And exit=0A=
+    quit()=0A=
+=0A=
+print("")=0A=
+# Some output so the user can see the file and nbins has been read =
+correctly=0A=
+print("Analysing file,",filename," by grouping data into ",nbins," bins")=0A=
+=0A=
+# A print statement to divide the output=0A=
+print("--------------------------------------------------------------")=0A=
+=0A=
+=0A=
+# Double check that the file exists and try to open it=0A=
+if(os.path.exists(filename)):=0A=
+    try:=0A=
+        f=3Dopen(filename,"r")=0A=
+    except:=0A=
+        print("Could not open the file,",filename)=0A=
+=0A=
+# At this point, the file should be open=0A=
+=0A=
+=0A=
+# The next step is to work out the min/max of our data and how many =
+points=0A=
+# we have=0A=
+minval=3Dfloat(f.readline())=0A=
+maxval=3Dfloat(minval)=0A=
+=0A=
+# To store the number of points read in. Starts from 1 because=0A=
+# we have read in a line above=0A=
+sumlines=3D1=0A=
+=0A=
+=0A=
+# Algorithm to work out how many lines there are in the file=0A=
+# and the max/min values=0A=
+for line in f:=0A=
+    datum=3Dfloat(line)=0A=
+=0A=
+    if(datum&lt;minval):=0A=
+        minval=3Ddatum=0A=
+    if(datum&gt;maxval):=0A=
+        maxval=3Ddatum=0A=
+=0A=
+    sumlines+=3D1=0A=
+=0A=
+# The range (max-min)=0A=
+rangedat=3Dmaxval-minval=0A=
+=0A=
+# Let's output some information on our data set=0A=
+print("")=0A=
+print("The number of data points is:",sumlines,"\n")=0A=
+print("The maximum of the data is:",maxval,"\n")=0A=
+print("The minimum of the data is:",minval,"\n")=0A=
+print("The range of the data is:",rangedat,"\n")=0A=
+=0A=
+=0A=
+# Declare an array that can contain the data=0A=
+data=3Dnumpy.zeros(sumlines)=0A=
+=0A=
+# Start the file again so we can read the data into the array=0A=
+f.seek(0)=0A=
+=0A=
+# Sumlinnes here is going to be the array lookup=0A=
+sumlines=3D0=0A=
+for line in f:=0A=
+    data[sumlines]=3Dfloat(line)=0A=
+    sumlines+=3D1=0A=
+=0A=
+f.close=0A=
+=0A=
+=0A=
+print(numpy.histogram(data,bins=3Dnbins,range=3D(minval,maxval)))=0A=
+</PRE></BODY></HTML>

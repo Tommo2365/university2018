@@ -1,0 +1,21 @@
+import os
+
+if(os.path.exists("newfilen.txt")==True):   #if this file does not exist (it doesnt)
+    
+    f=open("file1.txt")                     #read this flie if "newfilen.txt" exists (it doesnt)
+else:                                               
+    print("Error: file cannot read")        #otherwise print an error ()
+
+#if the file "newfilen.txt" does exist then the prgramme will open "file1.txt" and then open it
+
+
+
+############################################################################
+import os
+
+if(os.path.exists("newfile.txt")==True):    #This file does exist 
+    
+    f=open("file2.txt")                     #open "file1.txt" if "newfile.txt" exists (it does)
+    print(f.read())                         #if all of the above is true PRINT the file.
+else:                                               
+    print("Error: file cannot read")        #if none of the of the above exist. Print "Error"

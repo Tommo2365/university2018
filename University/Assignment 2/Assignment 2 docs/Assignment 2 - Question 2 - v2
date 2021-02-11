@@ -1,0 +1,42 @@
+################ QUESTION 2 ####################
+
+import numpy as np
+import os
+import matplotlib.pyplot as plt
+
+# Insure that 'grain_data.txt' is located in the same file as this code
+
+print("This file is located:",os.getcwd())                                  # Where is the file?             
+print(" ")                                                                  # Used to create a space in the shell                                                                  
+print("The files that exist in the above location are:",os.listdir())       # Other files in this location               
+f=open("grain_data.txt")                                                    #                                   
+# print(f.read())
+
+lc=0                                                                        # Keep track of number of lines
+
+for i in f:                                                                 # The number of lines in 'f'
+    lc=lc+1                                                                 #
+f.seek(0)                                                                   # Go back to line 0
+
+darray=np.ndarray(shape=lc,dtype=float)                                     # Declare and array 'lc' long
+
+j=0                                                                         # Index of 'i'
+for i in f:                                                                 # Stores each element in 'i' (Where 'i' is = to each line)
+    darray[j]=float(i)                                                      # Turns each value for 'i' into a float and puts each line into an array
+    j=j+1                                                                   # Keeps track of each line
+
+plt.xlabel('[Grain size/µm]')                                               # x-axis label
+plt.ylabel('[Number of grains]')                                            # y-axis label
+
+
+plt.hist(darray,bins=100)                                                   # Create a histogram with 100 bins from the 'darray'                                              
+# plt.show()                                                                # Generate histogram
+
+plt.savefig("question_2_plot.pdf",bbox_inches='tight')                      # Save the plot as a pdf named 'question_2_plot.pdf'
+
+print(" ")                                                                  # Used to create a space in the shell
+print("Please find the histogram plot 'question_2_plot.pdf' located at:",os.getcwd()) # Just to let you know
+
+# It is worth noting that if you wish to run the code a second time, you must have the pdf 'question_2_plot.pdf' closed.
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------

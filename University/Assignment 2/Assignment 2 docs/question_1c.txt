@@ -1,0 +1,1 @@
+The minimum value of the 1000 values in 'grain_data.txt' is calculated to be 0.0773095125619855 µm and the maximum value of the 1000 values in 'grain_data.txt' is calculated to be 3.2702793285398637 µm
